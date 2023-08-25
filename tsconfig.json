@@ -1,0 +1,10 @@
+{
+    "compilerOptions": { /* Enable incremental compilation */
+      "target": "es2020",
+      "module": "commonjs",
+      "outDir": "dist",
+      "strict": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true
+    }
+  }
