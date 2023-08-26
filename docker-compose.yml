@@ -1,13 +1,13 @@
 version: "3"
 services:
   db:
-    image: mysql:latest
+    image: mysql
     container_name: db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
-      - ${MYSQL_PORT}:${MYSQL_PORT}
+      - 3306:3306
     env_file:
       - .env
     volumes:
@@ -21,6 +21,6 @@ services:
       - db
     env_file:
       - .env
-    command: bash -c "npx prisma generate && npm run dev"
+    command: bash -c "npx prisma migrate dev && npm start"
 volumes:
   mysql:

@@ -4,8 +4,10 @@ WORKDIR /usr/src/
 
 COPY . /usr/src/
 
-EXPOSE 4000
+EXPOSE ${PORT}
 
 RUN npm i
 
-CMD ["npm","run","dev"]
+RUN npm run build
+
+CMD ["npm","start"]
