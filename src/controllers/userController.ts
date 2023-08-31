@@ -3,13 +3,13 @@ import userService from '../services/userService';
 
 
 async function login(req:Request,res:Response){
-    await userService.login(req.body);
-    res.status(200).send("token");
+    const token = await userService.login(req.body);
+    res.status(200).send(token);
 }
 
 async function register(req:Request,res:Response){
     await userService.register(req.body);
-    res.status(201);
+    res.status(201).send("user registered successfully!");
 }
 
 const userController = {
