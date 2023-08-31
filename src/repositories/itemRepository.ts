@@ -1,14 +1,15 @@
 import { prisma } from "../database/prisma";
+import { ItemDataEntry } from "../types";
 
 async function getItems(){
     return await prisma.item.findMany();
 }
 
-async function createItem(){
+async function createItem(dataEntry:ItemDataEntry){
     await prisma.item.create({
         data:{
-            name:'some name',
-            description:'some description'
+            name: dataEntry.name,
+            description: dataEntry.description
         }
     });
 }
