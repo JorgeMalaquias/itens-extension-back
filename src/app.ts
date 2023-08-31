@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import "express-async-errors";
+import { errorHandler } from "./middlewares/errorHandler";
 import itemRouter from "./routers/itemRouter";
 import userRouter from "./routers/userRouter";
 
@@ -13,6 +14,6 @@ app.use(itemRouter);
 app.use(userRouter);
 
 
-//app.use(errorHandlerMiddleware);
+app.use(errorHandler);
 
 export default app;

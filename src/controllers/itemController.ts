@@ -9,7 +9,7 @@ async function getItems(req:Request,res:Response){
 
 async function createItem(req:Request,res:Response){
     await itemService.createItem(req.body);
-    res.status(201);
+    res.sendStatus(201);
 }
 
 const itemController = {
