@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import joi from "joi";
 import { ItemDataEntry } from "../types";
 
-export function validateSchema(schema:joi.ObjectSchema<ItemDataEntry>) {
+export function validateSchema(schema:joi.ObjectSchema) {
     return (req:Request, res:Response, next:NextFunction) => { 
       const {error} = schema.validate(req.body, {abortEarly: false});
       if (error) {
