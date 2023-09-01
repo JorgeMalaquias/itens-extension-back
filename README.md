@@ -20,10 +20,10 @@ As tecnologias (Node.js, Typescript, Jest, MySql) eram requisitos mandatórios d
 
 1. Baixar este repositório para sua máquina.
 2. No diretório raíz do projeto, adicione um arquivo `.env`, com as seguintes variáveis de ambiente:  
-   MYSQL_PASSWORD= \_Pode ser qualquer string de sua preferência  
-   PORT=5000 \_Precisa ser um número  
-   DATABASE_URL=mysql://root:`MYSQL_PASSWORD`@db:3306/itens_extension OBS: A senhar logo após "root:" precisa ser igual ao valor da variável "MYSQL_PASSWORD"  
-   JWT_SECRET= OBS: Pode ser qualquer string
+   MYSQL_PASSWORD= *Pode ser qualquer string de sua preferência*  
+   PORT=5000 *Precisa ser um número*  
+   DATABASE_URL=mysql://root:`MYSQL_PASSWORD`@db:3306/itens_extension *A senhar logo após "root:" precisa ser igual ao valor da variável "MYSQL_PASSWORD"*    
+   JWT_SECRET= *Pode ser qualquer string*
 3. Se for a primeira vez que irá executar a aplicação e/ou se o container gerado for excluído em algum momento, para rodar execute primeiro, na pasta raíz do projeto `npm run build:docker`.
 4. Agora, execute, ainda na pasta raíz, `npm run start:docker`.
 5. Pronto, a API estará no ar e pronta para receber requisições.
