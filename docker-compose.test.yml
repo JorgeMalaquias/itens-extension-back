@@ -9,18 +9,20 @@ services:
     ports:
       - 3306:3306
     env_file:
-      - .env
+      - .env.test
     volumes:
       - mysql:/var/lib/mysql
   node_app:
     container_name: node_app
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.test
     ports:
       - ${PORT}:${PORT}
     depends_on:
       - db
     env_file:
-      - .env
-    command: bash -c "npx prisma migrate deploy && npm start"
+      - .env.test
+    command: bash -c "npx prisma migrate deploy && npm test"
 volumes:
   mysql:
