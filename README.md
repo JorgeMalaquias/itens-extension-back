@@ -18,15 +18,15 @@ As tecnologias (Node.js, Typescript, Jest, MySql) eram requisitos mandatórios d
 
 É necessário ter Docker v.23 ou mais recentes instalado!
 
-- Baixar este repositório para sua máquina.
-- No diretório raíz do projeto, adicione um arquivo `.env`, com as seguintes variáveis de ambiente:  
+1. Baixar este repositório para sua máquina.
+2. No diretório raíz do projeto, adicione um arquivo `.env`, com as seguintes variáveis de ambiente:  
    MYSQL_PASSWORD= **Pode ser qualquer string de sua preferência**  
    PORT=5000 **Precisa ser um número**    
    DATABASE_URL=mysql://root:`MYSQL_PASSWORD`@db:3306/itens_extension **A senhar logo após "root:" precisa ser igual ao valor da variável "MYSQL_PASSWORD"**    
    JWT_SECRET= **Pode ser qualquer string**
-- Se for a primeira vez que irá executar a aplicação e/ou se o container gerado for excluído em algum momento, para rodar execute primeiro, na pasta raíz do projeto `npm run build:docker`.
-- Agora, execute, ainda na pasta raíz, `npm run start:docker`.
-- Pronto, a API estará no ar e pronta para receber requisições.
+3. Se for a primeira vez que irá executar a aplicação e/ou se o container gerado for excluído em algum momento, para rodar execute primeiro, na pasta raíz do projeto `npm run build:docker`.
+4. Agora, execute, ainda na pasta raíz, `npm run start:docker`.
+5. Pronto, a API estará no ar e pronta para receber requisições.
 
 ### Rodando localmente
 
