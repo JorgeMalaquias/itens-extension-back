@@ -20,10 +20,10 @@ As tecnologias (Node.js, Typescript, Jest, MySql) eram requisitos mandatórios d
 
 1. Baixar este repositório para sua máquina.
 2. No diretório raíz do projeto, adicione um arquivo `.env`, com as seguintes variáveis de ambiente:  
-   MYSQL_PASSWORD= *Pode ser qualquer string de sua preferência*  
-   PORT=5000 *Precisa ser um número*  
-   DATABASE_URL=mysql://root:`MYSQL_PASSWORD`@db:3306/itens_extension *A senhar logo após "root:" precisa ser igual ao valor da variável "MYSQL_PASSWORD"*    
-   JWT_SECRET= *Pode ser qualquer string*
+   MYSQL_PASSWORD= **Pode ser qualquer string de sua preferência**  
+   PORT=5000 **Precisa ser um número**    
+   DATABASE_URL=mysql://root:`MYSQL_PASSWORD`@db:3306/itens_extension **A senhar logo após "root:" precisa ser igual ao valor da variável "MYSQL_PASSWORD"**    
+   JWT_SECRET= **Pode ser qualquer string**
 3. Se for a primeira vez que irá executar a aplicação e/ou se o container gerado for excluído em algum momento, para rodar execute primeiro, na pasta raíz do projeto `npm run build:docker`.
 4. Agora, execute, ainda na pasta raíz, `npm run start:docker`.
 5. Pronto, a API estará no ar e pronta para receber requisições.
@@ -35,10 +35,10 @@ As tecnologias (Node.js, Typescript, Jest, MySql) eram requisitos mandatórios d
 1. Baixar este repositório para sua máquina.
 2. Execute o servidor do mysql em sua máquina, ele precisa estar disponível para conexões.
 3. No diretório raíz do projeto, adicione um arquivo `.env`, com as seguintes variáveis de ambiente:
-   `MYSQL_PASSWORD`= OBS: Precisa ser a senha de acesso do Mysql instalado na sua máquina
-   `PORT=` OBS: Precisa ser um número
-   `DATABASE_URL`=mysql://`user`:`password`@`host`:3306/itens_extension OBS: Preencher com as informações de user, password, host de acordo com as configurações do mysql da sua máquina
-   `JWT_SECRET`= OBS: Pode ser qualquer string
+   `MYSQL_PASSWORD`= **Precisa ser a senha de acesso do Mysql instalado na sua máquina**  
+   `PORT=` **Precisa ser um número**  
+   `DATABASE_URL`=mysql://`user`:`password`@`host`:3306/itens_extension **Preencher com as informações de user, password, host de acordo com as configurações do mysql da sua máquina**  
+   `JWT_SECRET`= **Pode ser qualquer string**
 4. Para instalar as dependências execute o comando `npm i` na pasta raíz.
 5. Para criar o banco de dados execute o comando `npx prisma migrate deploy`
 6. Agora você pode obter por rodar em modo de desenvolvimento, neste caso execute `npm run dev` sempre que quiser rodar a aplicação. Ou se preferir rodar em produção, será necessário primeiro buildar a api. Para isso execute `npm run build`, e após isso sempre que quiser rodar a aplicação, execute `npm start`.
@@ -51,10 +51,10 @@ As tecnologias (Node.js, Typescript, Jest, MySql) eram requisitos mandatórios d
 
 1. Baixar este repositório para sua máquina, se já não o tiver feito.
 2. No diretório raíz do projeto, adicione um arquivo `.env.test`, com as seguintes variáveis de ambiente:
-   `MYSQL_PASSWORD`= OBS: Pode ser qualquer string de sua preferência
-   `PORT=` OBS: Precisa ser um número
-   `DATABASE_URL`=mysql://root:`MYSQL_PASSWORD`@db:3306/itens\*extension OBS: A senhar logo após "root:" precisa ser igual ao valor da variável `MYSQL_PASSWORD`
-   `JWT_SECRET`= OBS: Pode ser qualquer string
+   `MYSQL_PASSWORD`= **Pode ser qualquer string de sua preferência**  
+   `PORT=` **Precisa ser um número**
+   `DATABASE_URL`=mysql://root:`MYSQL_PASSWORD`@db:3306/itens\*extension **A senhar logo após "root:" precisa ser igual ao valor da variável `MYSQL_PASSWORD`**  
+   `JWT_SECRET`= **Pode ser qualquer string**  
 3. Se for a primeira vez que irá executar a aplicação e/ou se o container gerado for excluído em algum momento, para rodar execute primeiro, na pasta raíz do projeto `npm run test:docker:build`.
 4. Agora, execute, ainda na pasta raíz, `npm run test:docker`.
 5. Pronto, os testes serão executados e exibidos.
@@ -66,10 +66,10 @@ As tecnologias (Node.js, Typescript, Jest, MySql) eram requisitos mandatórios d
 1. Baixar este repositório para sua máquina, se já não o tiver feito.
 2. Execute o servidor do mysql em sua máquina, ele precisa estar disponível para conexões.
 3. No diretório raíz do projeto, adicione um arquivo `.env`, com as seguintes variáveis de ambiente:
-   `MYSQL_PASSWORD`= OBS: Precisa ser a senha de acesso do Mysql instalado na sua máquina
-   `PORT=` OBS: Precisa ser um número
-   `DATABASE_URL`=mysql://`user`:`password`@`host`:3306/itens\*extension OBS: Preencher com as informações de user, password, host de acordo com as configurações do mysql da sua máquina
-   `JWT_SECRET`= OBS: Pode ser qualquer string
+   `MYSQL_PASSWORD`= **Precisa ser a senha de acesso do Mysql instalado na sua máquina**  
+   `PORT=` **Precisa ser um número**  
+   `DATABASE_URL`=mysql://`user`:`password`@`host`:3306/itens\*extension **Preencher com as informações de user, password, host de acordo com as configurações do mysql da sua máquina**  
+   `JWT_SECRET`= **Pode ser qualquer string**  
 4. Para instalar as dependências execute o comando `npm i` na pasta raíz.
 5. Para criar o banco de dados execute o comando `npx prisma migrate deploy`
 6. Agora execute `npm test` sempre que quiser rodar os testes.
