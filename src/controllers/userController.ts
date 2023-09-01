@@ -12,15 +12,9 @@ async function register(req:Request,res:Response){
     res.status(201).send("user registered successfully!");
 }
 
-async function test(req:Request,res:Response){
-    const user =  await userService.getUser(req.body);
-    res.send(user);
-}
-
 const userController = {
     login,
-    register,
-    test
+    register
 }
 
 export default userController;

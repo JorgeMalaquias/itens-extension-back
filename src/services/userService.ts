@@ -16,11 +16,6 @@ async function login(dataEntry:UserDataEntry){
 
     throw ({ name: 'unauthorized', message: 'Invalid Credentials' });
 }
-
-async function getUser(dataEntry:UserDataEntry){
-    return await userRepository.getUser(dataEntry.email);
-}
-
 async function register(dataEntry:UserDataEntry){
     const userFound = await userRepository.getUser(dataEntry.email);
     if(userFound!==null){
@@ -52,8 +47,7 @@ function generateToken(id:number){
 
 const userService = {
     login,
-    register,
-    getUser
+    register
 }
 
 export default userService;
