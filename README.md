@@ -2,7 +2,7 @@
 
 Api desenvolvida para ser consumida pela seguinte aplicação: https://github.com/JorgeMalaquias/itens-extension-front.
 
-## Tecnologias empregadas:
+## Tecnologias empregadas
 
 - Prisma: foi escolhido devido a maior praticidade para criação do banco de dados, além de registro de atualizações no banco com as migrations.
 
@@ -19,8 +19,8 @@ As tecnologias (Node.js, Typescript, Jest, MySql) eram requisitos mandatórios d
 É necessário ter Docker v.23 ou mais recentes instalado!
 
 1. Baixar este repositório para sua máquina.
-2. No diretório raíz do projeto, adicione um arquivo `.env`, com as seguintes variáveis de ambiente:
-   MYSQL_PASSWORD= \_Pode ser qualquer string de sua preferência\*
+2. No diretório raíz do projeto, adicione um arquivo `.env`, com as seguintes variáveis de ambiente:  
+   MYSQL_PASSWORD= \_Pode ser qualquer string de sua preferência  
    PORT=5000 \_Precisa ser um número\*
    DATABASE_URL=mysql://root:`MYSQL_PASSWORD`@db:3306/itens_extension OBS: A senhar logo após "root:" precisa ser igual ao valor da variável "MYSQL_PASSWORD"  
    JWT_SECRET= OBS: Pode ser qualquer string
