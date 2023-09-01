@@ -1,26 +1,40 @@
 import supertest from "supertest";
 import app from "../../src/app";
-import { UserDataEntry } from "../../src/types";
-import { cleanDatabase } from "../utils/functions";
+import { cleanDatabase, generateUser } from "../utils/functions";
 
-beforeAll(async () => {
-    await cleanDatabase();
-});
 
-afterEach(async()=>{
+
+beforeEach(async () => {
     await cleanDatabase();
 });
 
 describe("GET /items", ()=>{
     it("should return a list of items",async()=>{
-        const body:UserDataEntry = {
-            email: "joao@email.com",
-            password: "itaquaquecetuba"
-        }
-        const result = await supertest(app).post("/users").send(body);
-        expect(result.status).toEqual(201);
+        const user = await generateUser();
+
+        await supertest(app).post("/users").send(user);
+        const login = await supertest(app).post("/users/auth").send(user);
+        const token = login.text;
+        const headers = {Authorization:`Bearer ${token}`};
+
+        const result = await supertest(app).get("/items").set(headers);
+        expect(result.status).toEqual(200);
     });
-    it.todo("should thrown a unauthorized error with 401 status when the authentication has failed");
+    it("should thrown a unauthorized error with 401 status when the authentication has failed",async()=>{
+        const user = await generateUser();
+        await supertest(app).post("/users").send(user);
+
+        const login = await supertest(app).post("/users/auth").send(user);
+        const token = login.text;
+        const headers = {authorization:`${token}`};
+
+        const result = await supertest(app).get("/items").set(headers);
+        expect(result.status).toEqual(401);
+    });
+    it("should thrown a unauthorized error with 401 status when the authentication has failed",async()=>{
+        const result = await supertest(app).get("/items");
+        expect(result.status).toEqual(401);
+    });
 });
 
 describe("POST /items",()=>{

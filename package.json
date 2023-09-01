@@ -10,12 +10,13 @@
     "build:docker": "docker-compose build && docker-compose up",
     "build": "tsc",
     "test": "npx dotenv-cli -e .env.test jest --no-cache",
-    "migrate:test":"npx dotenv-cli -e .env.test prisma migrate deploy"
+    "migrate:test": "npx dotenv-cli -e .env.test prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@prisma/client": "^5.2.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -31,6 +32,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
+    "@types/faker": "^6.6.9",
     "@types/jest": "^29.5.4",
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^9.0.2",
