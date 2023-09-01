@@ -5,6 +5,6 @@ type ItemDataEntry = Omit<Item,"id">
 type UserDataEntry = Omit<User,"id">
 
 type ApplicationError = {
-    type: string;
+    name: string;
     message: string;
-};
+}

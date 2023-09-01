@@ -1,7 +1,8 @@
 import app from "./app";
+import sanitizedConfig from "./config";
 
-const PORT:number = Number(process.env.PORT) || 5000;
+const port:number = sanitizedConfig.PORT;
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}.`);
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}.`);
 });

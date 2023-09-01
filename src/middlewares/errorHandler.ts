@@ -1,9 +1,10 @@
 import { Request,Response,NextFunction } from "express";
+import { JsonWebTokenError } from "jsonwebtoken";
 import { ApplicationError } from "../types";
 
-export function errorHandler(err:ApplicationError, req:Request, res:Response, next:NextFunction) {
-    if (err.type) {
-        return res.status(errorTypeToStatusCode(err.type)).send(err.message);
+export function errorHandler(err:ApplicationError | JsonWebTokenError, req:Request, res:Response, next:NextFunction) {
+    if (err.name) {
+        return res.status(errorTypeToStatusCode(err.name)).send(err.message);
     }
 
     return res.sendStatus(500);

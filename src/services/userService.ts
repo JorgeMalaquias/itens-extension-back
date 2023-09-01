@@ -2,24 +2,29 @@ import userRepository from "../repositories/userRepository";
 import { UserDataEntry } from "../types";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import sanitizedConfig from "../config";
 
 async function login(dataEntry:UserDataEntry){
     const userFound = await userRepository.getUser(dataEntry.email);
     if(userFound===null){
-        throw ({ type: 'not_found', message: 'The informed email does not belong to any registered user!' });
+        throw ({ name: 'not_found', message: 'The informed email does not belong to any registered user!' });
     }
 
     if (userFound && checkPassword(dataEntry.password,userFound.password)) {
         return generateToken(userFound.id);
     }
 
-    throw ({ type: 'unauthorized', message: 'Invalid Credentials' });
+    throw ({ name: 'unauthorized', message: 'Invalid Credentials' });
+}
+
+async function getUser(dataEntry:UserDataEntry){
+    return await userRepository.getUser(dataEntry.email);
 }
 
 async function register(dataEntry:UserDataEntry){
     const userFound = await userRepository.getUser(dataEntry.email);
     if(userFound!==null){
-        throw ({ type: 'conflict', message: 'The informed email is already been used!' });
+        throw ({ name: 'conflict', message: 'The informed email is already been used!' });
     }
     const finalData = {
         email: dataEntry.email,
@@ -38,7 +43,7 @@ function checkPassword(password:string,hashedPassword:string){
 
 function generateToken(id:number){
     const oneWeekInSeconds = 60 * 60 * 24 * 7;
-    const jwtKey:string = process.env.JWT_SECRET || 'xablau';
+    const jwtKey:string = sanitizedConfig.JWT_SECRET;
     const tokenConfig = { expiresIn: oneWeekInSeconds };
     const userInfo = { id };
     const token = jwt.sign(userInfo, jwtKey, tokenConfig);
@@ -47,7 +52,8 @@ function generateToken(id:number){
 
 const userService = {
     login,
-    register
+    register,
+    getUser
 }
 
 export default userService;
