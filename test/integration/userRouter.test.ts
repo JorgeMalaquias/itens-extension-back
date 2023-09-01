@@ -5,7 +5,7 @@ import { cleanDatabase, generateUser } from "../utils/functions";
 
 
 
-beforeEach(async () => {
+afterEach(async () => {
     await cleanDatabase();
 });
 
@@ -21,11 +21,10 @@ describe("POST /users",()=>{
         expect(result.status).toEqual(201);
     });
     it("should thrown a conflict error with 409 status when the email sent is already been used",async()=>{
-        const user = await generateUser();
-        await supertest(app).post("/users").send(user);
+        const {user,newUser} = await generateUser();
         const result = await supertest(app).post("/users").send(user);
-        expect(result.status).toEqual(409);
         expect(result.text).toEqual("The informed email is already been used!");
+        expect(result.status).toEqual(409);
     });
     it("should thrown a bad request error with 400 status when the body of the request is not valid: password missing",async ()=>{
         const body = {
@@ -65,8 +64,7 @@ describe("POST /users",()=>{
 
 describe("POST /users/auth",()=>{
     it("should return a 200 status when the login is made successfully and return a token",async()=>{
-        const user = await generateUser();
-        await supertest(app).post("/users").send(user);
+        const {user,newUser} = await generateUser();
         const result = await supertest(app).post("/users/auth").send(user);
         expect(result.status).toEqual(200);
     });
@@ -114,14 +112,10 @@ describe("POST /users/auth",()=>{
         expect(result.text).toEqual("\"password\" length must be at least 6 characters long");
     });
     it("should thrown a unauthorized error with 401 status when the credentials are not valid",async()=>{
-        const user = await generateUser();
-        await supertest(app).post("/users").send(user);
-        const body:UserDataEntry = {
-            email: user.email,
-            password: "itaquaquecetuba"
-        }
-        const result = await supertest(app).post("/users/auth").send(body);
-        expect(result.status).toEqual(401);
+        const {user,newUser} = await generateUser();
+        const result = await supertest(app).post("/users/auth").send({email:user.email,password:"any"+user.password});
         expect(result.text).toEqual("Invalid Credentials");
+        expect(result.status).toEqual(401);
+        
     });
 })

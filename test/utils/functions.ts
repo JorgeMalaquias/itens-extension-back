@@ -37,48 +37,63 @@ export async function userSeed(){
         ],
     })
 }
+
+export async function generateUser(){
+    const user = {
+        email: faker.internet.email(),
+        password: faker.word.noun().length.toFixed(15)
+    };
+    const newUser = await prisma.user.create({
+        data:{
+            email: user.email,
+            password: bcrypt.hashSync(user.password,10)
+        }
+    })
+    return {user,newUser};
+} 
+
 export async function itemSeed(){
     await prisma.item.createMany({
         data:[
             {
-                name: "algum item 1",
-                description: "um texto descrevendo do que se trata o item 1"
+                name: faker.word.noun().length.toFixed(14),
+                description: faker.lorem.text().length.toFixed(50).length.toFixed(50)
             },
             {
-                name: "algum item 2",
-                description: "um texto descrevendo do que se trata o item 2"
+                name: faker.word.noun().length.toFixed(14),
+                description: faker.lorem.text().length.toFixed(50)
             },
             {
-                name: "algum item 3",
-                description: "um texto descrevendo do que se trata o item 3"
+                name: faker.word.noun().length.toFixed(14),
+                description: faker.lorem.text().length.toFixed(50)
             },
             {
-                name: "algum item 4",
-                description: "um texto descrevendo do que se trata o item 4"
+                name: faker.word.noun().length.toFixed(14),
+                description: faker.lorem.text().length.toFixed(50)
             },
             {
-                name: "algum item 5",
-                description: "um texto descrevendo do que se trata o item 5"
+                name: faker.word.noun().length.toFixed(14),
+                description: faker.lorem.text().length.toFixed(50)
             },
             {
-                name: "algum item 6",
-                description: "um texto descrevendo do que se trata o item 6"
+                name: faker.word.noun().length.toFixed(14),
+                description: faker.lorem.text().length.toFixed(50)
             },
             {
-                name: "algum item 7",
-                description: "um texto descrevendo do que se trata o item 7"
+                name: faker.word.noun().length.toFixed(14),
+                description: faker.lorem.text().length.toFixed(50)
             },
             {
-                name: "algum item 8",
-                description: "um texto descrevendo do que se trata o item 8"
+                name: faker.word.noun().length.toFixed(14),
+                description: faker.lorem.text().length.toFixed(50)
             }
         ]
     })
 }
-export async function generateUser(){
-    const user = {
-        email: faker.internet.email(),
-        password: faker.word.noun()
+
+export function generateItem() {
+    return {
+        name: faker.word.noun(),
+        description: faker.lorem.text()
     };
-    return user;
-} 
+}

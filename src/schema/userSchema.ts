@@ -3,8 +3,8 @@ import {  UserDataEntry } from '../types';
 
 
 export const userSchema = joi.object<UserDataEntry>({
-    email: joi.string().email().required().min(6).max(30),
-    password: joi.string().required().min(6).max(30)
+    email: joi.string().email().required(),
+    password: joi.string().required().min(6)
 });
 
 export const userPayloadSchema = joi.object({

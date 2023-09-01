@@ -3,6 +3,6 @@ import { ItemDataEntry } from '../types';
 
 
 export const itemSchema = joi.object<ItemDataEntry>({
-    name:joi.string().pattern(/^[a-zA-Z]*$/).required(),
+    name:joi.string().required(),
     description: joi.string().required()
 });
